@@ -23,13 +23,14 @@ namespace minesweeper
     {
 
         private int[,] difficulty = { { 8,10 }, { 16, 40 }, { 24, 99 } };
-        private string img_mine = "image/mine.png";
-        private string img_flag = "image/flag.png";
-        private string img_timer = "image/timer.png";
-        private string img_smiley_face = "image/smiley_face.png";
-        private string img_big_smiley_face = "image/big_smiley_face.png";
-        private string img_frowney_face = "image/frowny_face.png";
+        //private string img_mine = "image/mine.png";
+        //private string img_flag = "image/flag.png";
+        //private string img_timer = "image/timer.png";
+        //private string img_smiley_face = "image/smiley_face.png";
+        //private string img_big_smiley_face = "image/big_smiley_face.png";
+        //private string img_frowney_face = "image/frowny_face.png";
 
+        private string difficultySetting = null;
         private int timeCount = 0;
         private int mineCount = 0;
         private int mapSize = 0;
@@ -42,10 +43,12 @@ namespace minesweeper
         {
             InitializeComponent();
 
-            string difficultySetting = "beginner";
+            difficultySetting = "beginner";
             mapSize = difficulty[0,0];
             totalMines = difficulty[0,1];
             mineCount = totalMines;
+            tbMineCount.Text = mineCount.ToString("D3");
+            tbTimeCount.Text = "000";
             DrawMineField();
 
             DataContext = this;
@@ -67,7 +70,6 @@ namespace minesweeper
                     {
                         X = x,
                         Y = y,
-                        Content = x.ToString() + "," + y.ToString(),
                     };
                     mineSquares.Add(square);
                 }
