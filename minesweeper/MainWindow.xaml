@@ -18,8 +18,8 @@
                 <TextBlock Name="tbMineCount" FontSize="30" />
             </WrapPanel>
             <WrapPanel Grid.Column="1" VerticalAlignment="Center">
-                <Button>
-                    <Image Source="/images/smiley_face.png" Height="30" Width="30" />
+                <Button Click="ClickButton">
+                    <Image Name="tbButtonImage" Source="/images/smiley_face.png" Height="30" Width="30" />
                 </Button>
             </WrapPanel>
             <WrapPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">

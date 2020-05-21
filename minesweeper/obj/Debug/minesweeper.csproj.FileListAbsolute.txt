@@ -12,3 +12,4 @@ D:\development\dev\minesweeper-csharp\minesweeper\obj\Debug\minesweeper.csproj.G
 D:\development\dev\minesweeper-csharp\minesweeper\obj\Debug\minesweeper.csproj.CoreCompileInputs.cache
 D:\development\dev\minesweeper-csharp\minesweeper\obj\Debug\minesweeper.exe
 D:\development\dev\minesweeper-csharp\minesweeper\obj\Debug\minesweeper.pdb
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Debug\minesweeper.csprojResolveAssemblyReference.cache
