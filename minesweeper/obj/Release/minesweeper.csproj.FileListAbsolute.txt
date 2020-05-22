@@ -1,0 +1,14 @@
+D:\development\dev\minesweeper-csharp\minesweeper\bin\Release\minesweeper.exe.config
+D:\development\dev\minesweeper-csharp\minesweeper\bin\Release\minesweeper.exe
+D:\development\dev\minesweeper-csharp\minesweeper\bin\Release\minesweeper.pdb
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\MainWindow.g.cs
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\App.g.cs
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\minesweeper_MarkupCompile.cache
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\minesweeper_MarkupCompile.lref
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\MainWindow.baml
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\minesweeper.g.resources
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\minesweeper.Properties.Resources.resources
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\minesweeper.csproj.GenerateResource.Cache
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\minesweeper.csproj.CoreCompileInputs.cache
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\minesweeper.exe
+D:\development\dev\minesweeper-csharp\minesweeper\obj\Release\minesweeper.pdb

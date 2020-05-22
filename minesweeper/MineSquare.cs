@@ -15,7 +15,7 @@ namespace minesweeper
         public int X { get; set; }
         public int Y { get; set; }
         public string Content { get; set; }
-        public SolidColorBrush BackgroundColor { get; set; } = new SolidColorBrush(Colors.SandyBrown);
+        public SolidColorBrush BackgroundColor { get; set; } = new SolidColorBrush(Colors.Wheat);
         public bool IsRevealed { get; set; } = false;
         public bool IsMine { get; set; } = false;
         public bool IsFlagged { get; set; } = false;
@@ -112,11 +112,13 @@ namespace minesweeper
             {
                 Content = null;
                 IsFlagged = false;
+                wnd.UpdateMineCount("+");
             }
             else
             {
                 IsFlagged = true;
                 Content = img_flag;
+                wnd.UpdateMineCount("-");
             }
             NotifyPropertyChanged("Content");
             wnd.CheckWin();

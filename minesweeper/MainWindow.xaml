@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:minesweeper"
         mc:Ignorable="d"
-        Title="MainWindow" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+        Title="Minesweeper" SizeToContent="WidthAndHeight" ResizeMode="NoResize" Icon="/images/mine.png">
     <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Click="ClickBeginner" Content="Beginner"/>
+                <Button Click="ClickIntermediate" Content="Intermediate"/>
+                <Button Click="ClickExpert" Content="Expert"/>
+            </ToolBar>
+        </ToolBarTray>
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*"/>
@@ -38,8 +45,8 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <Button Width="35" Height="35" Grid.Column="{Binding X}" Grid.Row="{Binding Y}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{Binding BackgroundColor}" IsEnabled="{Binding IsClickable}">
+                        <Border BorderBrush="Black">
+                            <Button Width="25" Height="25" Grid.Column="{Binding X}" Grid.Row="{Binding Y}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{Binding BackgroundColor}" IsEnabled="{Binding IsClickable}">
                                 <Button.InputBindings>
                                     <MouseBinding MouseAction="RightClick" Command="{Binding FlagSquare}"/>
                                     <MouseBinding MouseAction="LeftClick" Command="{Binding ClickSquare}"/>

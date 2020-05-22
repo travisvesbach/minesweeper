@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows.Threading;
 
 namespace minesweeper
@@ -51,8 +50,6 @@ namespace minesweeper
             InitializeComponent();
 
             difficultySetting = "beginner";
-            mapSize = difficulty[0,0];
-            totalMines = difficulty[0,1];
 
             ResetMineField();
 
@@ -67,6 +64,7 @@ namespace minesweeper
         public void ResetMineField()
         {
             UpdateStatus("ready");
+            SetDifficulty();
             mineCount = totalMines;
             revealedCount = 0;
             revealedWinCount = (mapSize * mapSize) - totalMines;
@@ -79,6 +77,25 @@ namespace minesweeper
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += UpdateTimer;
 
+        }
+
+        public void SetDifficulty()
+        {
+            switch (difficultySetting)
+            {
+                case "beginner":
+                    mapSize = difficulty[0, 0];
+                    totalMines = difficulty[0, 1];
+                    break;
+                case "intermediate":
+                    mapSize = difficulty[1, 0];
+                    totalMines = difficulty[1, 1];
+                    break;
+                case "expert":
+                    mapSize = difficulty[2, 0];
+                    totalMines = difficulty[2, 1];
+                    break;
+            }
         }
 
         public void DrawMineField()
@@ -226,7 +243,9 @@ namespace minesweeper
             UpdateStatus("win");
             timer.Stop();
             RevealMap();
-            string message = "Congratulations! You beat " + difficultySetting + " in " + (DateTime.Now - timerStart).Seconds.ToString() + " seconds!";
+            TimeSpan diff = DateTime.Now - timerStart;
+            int seconds = (int)Math.Round(diff.TotalSeconds);
+            string message = "Congratulations! You beat " + difficultySetting + " in " + seconds.ToString() + " seconds!";
             MessageBox.Show(message);
         }
 
@@ -239,7 +258,29 @@ namespace minesweeper
 
         public void UpdateTimer(object sender, EventArgs e)
         {
-            tbTimeCount.Text = (DateTime.Now - timerStart).Seconds.ToString("D3");
+            TimeSpan diff = DateTime.Now - timerStart;
+            int seconds = (int)Math.Round(diff.TotalSeconds);
+            tbTimeCount.Text = seconds.ToString("D3");
+        }
+
+        public void UpdateMineCount(string addOrSubtract)
+        {
+            if (status == "playing")
+            {
+                if (addOrSubtract == "+")
+                {
+                    mineCount++;
+                }
+                else
+                {
+                    mineCount--;
+                }
+            }
+            else if(status == "win")
+            {
+                mineCount = 0;
+            }
+            tbMineCount.Text = mineCount.ToString("D3");
         }
 
         public void ClickButton(object sender, EventArgs e)
@@ -251,6 +292,62 @@ namespace minesweeper
             }
             else if (status == "failed" || status == "win")
             {
+                ResetMineField();
+            }
+        }
+
+        public MessageBoxResult ConfirmRestart()
+        {
+            return System.Windows.MessageBox.Show("You will lose your progress. Continue?", "Warning", System.Windows.MessageBoxButton.YesNo);
+        }
+
+        public void ClickBeginner(object sender, EventArgs e)
+        {
+            if (status == "playing")
+            {
+                if (ConfirmRestart() == MessageBoxResult.Yes)
+                {
+                    difficultySetting = "beginner";
+                    ResetMineField();
+                }
+            }
+            else
+            {
+                difficultySetting = "beginner";
+                ResetMineField();
+            }
+        }
+
+        public void ClickIntermediate(object sender, EventArgs e)
+        {
+            if (status == "playing")
+            {
+                if (ConfirmRestart() == MessageBoxResult.Yes)
+                {
+                    difficultySetting = "intermediate";
+                    ResetMineField();
+                }
+            }
+            else
+            {
+                difficultySetting = "intermediate";
+                ResetMineField();
+            }
+        }
+
+        public void ClickExpert(object sender, EventArgs e)
+        {
+            if (status == "playing")
+            {
+                if (ConfirmRestart() == MessageBoxResult.Yes)
+                {
+                    difficultySetting = "expert";
+                    ResetMineField();
+                }
+            }
+            else
+            {
+                difficultySetting = "expert";
                 ResetMineField();
             }
         }
